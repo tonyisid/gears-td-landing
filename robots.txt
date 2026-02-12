@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://tonyisid.github.io/gears-td-landing/sitemap.xml

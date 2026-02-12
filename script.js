@@ -1,3 +1,25 @@
+// Hero video setup
+const heroVideo = document.getElementById('heroVideo');
+if (heroVideo) {
+    // Ensure video plays
+    heroVideo.play().catch(e => {
+        console.log('Autoplay prevented:', e);
+    });
+
+    // Pause when video is not visible (performance)
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                heroVideo.play();
+            } else {
+                heroVideo.pause();
+            }
+        });
+    }, { threshold: 0.25 });
+
+    observer.observe(heroVideo);
+}
+
 // Smooth scrolling for anchor links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {

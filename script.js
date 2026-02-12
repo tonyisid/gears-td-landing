@@ -73,9 +73,33 @@ document.querySelectorAll('.btn').forEach(btn => {
     btn.addEventListener('mouseenter', () => {
         btn.style.transform = 'translateY(-3px) scale(1.02)';
     });
-    
+
     btn.addEventListener('mouseleave', () => {
         btn.style.transform = 'translateY(0) scale(1)';
+    });
+});
+
+// Screenshot lightbox
+const screenshots = document.querySelectorAll('.screenshot');
+screenshots.forEach(screenshot => {
+    screenshot.addEventListener('click', () => {
+        const overlay = document.createElement('div');
+        overlay.className = 'lightbox-overlay';
+        overlay.innerHTML = `
+            <img src="${screenshot.src}" alt="${screenshot.alt}" class="lightbox-image">
+            <button class="lightbox-close">&times;</button>
+        `;
+        document.body.appendChild(overlay);
+
+        overlay.querySelector('.lightbox-close').addEventListener('click', () => {
+            document.body.removeChild(overlay);
+        });
+
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) {
+                document.body.removeChild(overlay);
+            }
+        });
     });
 });
 

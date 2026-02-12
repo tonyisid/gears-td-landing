@@ -79,7 +79,7 @@ document.querySelectorAll('.btn').forEach(btn => {
     });
 });
 
-// Screenshot lightbox
+// Screenshot lightbox (click to enlarge)
 const screenshots = document.querySelectorAll('.screenshot');
 screenshots.forEach(screenshot => {
     screenshot.addEventListener('click', () => {
